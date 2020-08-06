@@ -1,0 +1,99 @@
+﻿@model Hospital_Managmnt.Models.Appointments
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
+
+</head>
+
+<section class="content-header">
+    <h1>
+        Appointment
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header">
+            <h3 class="box-title">Update Appointment</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form asp-controller="Appointments" class="form-horizontal" method="post" asp-action="Update">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="box-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">StartDateTime</label>
+                    <div class="col-sm-5">
+                        @*<input type="datetime-local" class="form-control" name="StartDateTime" placeholder="StartDateTime" value="@Model.StartDateTime" />*@
+                        <div class="input-group date" id="datetimepicker1">
+                            <input type="text" class="form-control" name="StartDateTime" placeholder="Datetime" value="@Model.StartDateTime">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="StartDateTime" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Details</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Details" placeholder="Details" value="@Model.Details" />
+                    </div>
+                    <span asp-validation-for="Details" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Status" placeholder="Status" value="@Model.Status" />
+                    </div>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">DoctorID</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="DoctorId" placeholder="DoctorId" value="@Model.DoctorId" />
+                    </div>
+                    <span asp-validation-for="DoctorId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">PatientID</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="PatientId" placeholder="PatientId" value="@Model.PatientId" />
+                    </div>
+                    <span asp-validation-for="PatientId" class="text-danger"></span>
+                </div>
+
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-danger">Cancel</button>
+                <button type="submit" class="btn btn-info">Update</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+    <!-- /.box -->
+</section>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm:ss'
+
+        });
+    });
+</script>

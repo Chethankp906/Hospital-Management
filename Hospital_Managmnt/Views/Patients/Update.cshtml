@@ -1,0 +1,97 @@
+﻿@model Hospital_Managmnt.Models.Patients
+
+
+<section class="content-header">
+    <h1>
+        Patients
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Update Patient</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form asp-controller="Patients" class="form-horizontal" method="post" asp-action="Update">
+            <input type="hidden" asp-for="PatientId" />
+            <input type="hidden" asp-for="Gender" />
+
+            <div class="box-body">
+                <div class="form-group">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Name" placeholder="Patient Name" value="@Model.Name" />
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Phone" placeholder="Phone" value="@Model.Phone" />
+                    </div>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                @*<div class="form-group">
+                <label for="Gender" class="col-sm-2 control-label">Gender</label>
+                <div class="col-sm-7">
+                    @if (Model.Gender == "M")
+                    {
+                        <input type="radio" name="Gender" value="M" checked />
+                        <label>Male</label>
+
+                        <input type="radio" name="Gender" value="F" />
+                        <label>Female</label>
+                    }
+                    @if (Model.Gender == "F")
+                    {
+                        <input type="radio" name="Gender" value="M" />
+                        <label>Male</label>
+
+                        <input type="radio" name="Gender" value="F" checked />
+                        <label>Female</label>
+                    }
+                </div>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>*@
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Age</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Age" placeholder="Age" value="@Model.Age" />
+                    </div>
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">DoctorId</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="DoctorId" placeholder="DoctorId" value="@Model.DoctorId" />
+                    </div>
+                    <span asp-validation-for="DoctorId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">NurseId</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="NurseId" placeholder="NurseId" value="@Model.NurseId" />
+                    </div>
+                    <span asp-validation-for="NurseId" class="text-danger"></span>
+                </div>
+
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-danger">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+    <!-- /.box -->
+</section>

@@ -1,0 +1,119 @@
+﻿@model Hospital_Managmnt.Models.Attendance
+
+@*@{
+    ViewData["Title"] = "Update";
+}*@
+
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
+</head>
+
+
+<section class="content-header">
+    <h1>
+        Attendance
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header">
+            <h3 class="box-title">Update Attendance</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form asp-controller="Attendances" class="form-horizontal" method="post" asp-action="Update">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="box-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Patient</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="PatientId" placeholder="PatientId" value="@Model.PatientId" />
+                        </div>
+                        <span asp-validation-for="PatientId" class="text-danger"></span>
+                    </div>
+
+                    <label for="inputEmail3" class="col-sm-2 control-label">HospitalRemarks</label>
+                    <div class="col-sm-5">
+
+                        @*<input type="text" class="form-control" name="HospitalRemarks" placeholder="HospitalRemarks" value="@Model.HospitalRemarks" />*@
+                        @Html.TextAreaFor(m => m.HospitalRemarks, new { rows = "5", cols = "5", @class = "form-control", @maxlength = "100" })
+                        @Html.ValidationMessageFor(m => m.HospitalRemarks, "", new { @class = "text-danger" })
+
+                    </div>
+                    <span asp-validation-for="HospitalRemarks" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Diagnosis</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Diagnosis" placeholder="Diagnosis" value="@Model.Diagnosis" />
+                    </div>
+                    <span asp-validation-for="Diagnosis" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">SecondDiagonsis</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="SecondDiagonsis" placeholder="SecondDiagonsis" value="@Model.SecondDiagonsis" />
+                    </div>
+                    <span asp-validation-for="SecondDiagonsis" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Theraphy</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Theraphy" placeholder="Theraphy" value="@Model.Theraphy" />
+                    </div>
+                    <span asp-validation-for="Theraphy" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Date</label>
+                    <div class="col-sm-5">
+                        @*<input type="text" class="form-control" name="Date" placeholder="Date" value="@Model.Date" />*@
+                        <div class="input-group date" id="datetimepicker1">
+                            <input type="text" class="form-control" name="Date" placeholder="Date" value="@Model.Date">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+
+
+            </div>
+
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-danger">Cancel</button>
+                <button type="submit" class="btn btn-info">Update</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+    <!-- /.box -->
+</section>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm:ss'
+
+        });
+    });
+</script>

@@ -1,0 +1,72 @@
+﻿@model Hospital_Managmnt.Models.Nurse
+
+
+<section class="content-header">
+    <h1>
+        Nurses
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Update Nurse</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form asp-controller="Nurses" class="form-horizontal" method="post" asp-action="Update">
+            <input type="hidden" asp-for="NurseId" />
+            <!--Hidden Field-->
+          <input type="hidden" asp-for="Password" />
+           
+
+            <div class="box-body">
+                <div class="form-group">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label asp-for="Name" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="Name" placeholder="Name" value="@Model.Name" />
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-6">
+                    <input type="Email" class="form-control" name="Email" placeholder="Email" value="@Model.Email" />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group">
+                <label asp-for="Password" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" name="Password" placeholder="Password" value="@Model.Password" />
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>*@
+
+
+
+                <div class="form-group">
+                    <label asp-for="Phone" class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="Phone" placeholder="Phone" value="@Model.Phone"/>
+                    </div>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+
+
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-danger">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+    <!-- /.box -->
+</section>

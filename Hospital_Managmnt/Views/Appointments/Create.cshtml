@@ -1,0 +1,134 @@
+﻿@model Hospital_Managmnt.Models.Appointments
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
+
+</head>
+
+<section class="content-header">
+    <h1>
+        Appointment
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Add Appointment</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" method="post" action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Doctor</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(model => model.DoctorId,
+                             (IEnumerable<SelectListItem>)ViewBag.message,
+                               "Select Doctor", new { @class = "form-control", @id = "DoctorId" })
+
+                        @*@Html.DropDownList("DoctorId",
+                            (IEnumerable<SelectListItem>)ViewBag.message,
+                            "Select Doctor",
+                            new { @class = "form-control", @id = "DoctorId" })*@
+                    </div>
+                    <span asp-validation-for="DoctorId" class="text-danger"></span>
+                </div>
+
+
+
+
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Patient</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(model => model.PatientId,
+                             (IEnumerable<SelectListItem>)ViewBag.listofitem,
+                             "Select Patient", new { @class = "form-control", @id = "DoctorId" })
+
+                        @*@Html.DropDownList("PatientId",
+                            (IEnumerable<SelectListItem>)ViewBag.listofitem,
+                            "Select Patient",
+                             new { @class = "form-control", @id = "PatientId" })*@
+                    </div>
+                    <span asp-validation-for="PatientId" class="text-danger"></span>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">StartDateTime</label>
+                    <div class="col-sm-5">
+                        @*<input type="datetime-local" class="form-control" name="StartDateTime" placeholder="StartDateTime">*@
+                        <div class="input-group date" id="datetimepicker1">
+                            <input type="text" class="form-control" name="StartDateTime" placeholder="Datetime">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <span asp-validation-for="StartDateTime" class="text-danger"></span>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Details</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Details" placeholder="Details">
+                        @*<textarea></textarea>*@
+                    </div>
+                    <span asp-validation-for="Details" class="text-danger"></span>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="Status" placeholder="Status">
+                    </div>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-success" style="margin-left:200px;">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                format: 'DD/MM/YYYY HH:mm:ss'
+               
+            });
+        });
+    </script>
+
+</section>
+
+
